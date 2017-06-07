@@ -10,30 +10,74 @@
 
 # "123" can be decoded as "ABC" (1 2 3), "LC" (12 3) or "AW" (1 23), so the total number of ways is 3.
 
-def mapDecoding(message, combos = 0)
 
-	#base case 
-	if message.length == 2
-	if message.to_i.between?(1, 26)
-		message != "0"
-		return true
-	else
-		retur
+def mapDecoding(message, i = 0, memo = {})
+    if message == "" 
+        0
+    elsif i == message.length 
+        1
+    end 
+    
+    count = 0
+    if memo[i]
+        count += memo[i]
+    else
+        if valid?(message[i])
+            count += mapDecoding(message, i + 1, memo)
+        end 
 
-	
-    combos = 0
-    i = 0
-    while i < message.length
-        combos += 1
-        next_num = message[i+1]
-        unless next_num.nil?
-            if next_num == "0"
-                i += 2
+        if valid?(message[i..i + 1]) && i < message.length - 1
+            count += mapDecoding(message, i + 2, memo) 
+        end
+        
+        memo[i] = count
+    end
+    count 
+end
+
+def valid?(str)
+    if str.length == 2
+        str.to_i.between?(10, 26)
+    else
+        str.to_i.between?(1, 9)
+    end
+end
+
+# Dynamic Programming solution
+
+def mapDecoding(message)
+    return 1 if message.length.zero?
+
+    dp = Array.new(message.length) { 0 }
+
+    (0...message.length).each do |i|
+        if i == 0
+            unless message[i] == "0"
+                dp[i] = 1
             else
-                combos +=1 if  message[i..i+1].to_i <= 26
-								i += 1
+                dp[i] = 0
+            end
+        elsif i == 1 
+            unless message[i] == "0"
+                dp[i] = dp[i - 1]
+            end
+
+            if valid?(message[i-1..i])
+                dp[i] += 1
+            end
+        else
+            unless message[i] == "0"
+                dp[i] = dp[i - 1]
+            end
+
+            if valid?(message[i-1..i])
+                dp[i] += dp[i - 2]
             end
         end
     end
-    combos
+    dp.last
 end
+
+puts mapDecoding("1221112111122221211221221212212212111221222212122221222112122212121212221212122221211112212212211211")
+
+puts mapDecoding("1")
