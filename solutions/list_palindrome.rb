@@ -32,6 +32,7 @@ def isListPalindrome(l)
 		true 
 end
 
+#Alternative solution
 
 def isListPalindrome l
     length = 0
