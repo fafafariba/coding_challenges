@@ -35,7 +35,7 @@ def merge(left, right)
         end
     end
     
-    result + left[] + right
+    result + left[i..-1] + right[j..-1]
 end
 
 
