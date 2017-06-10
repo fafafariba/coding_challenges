@@ -43,7 +43,6 @@ def digitalroot(n)
     until n.to_s.length == 1
         sum = 0
         n.to_s.split("").each do |n|
-					puts n
             sum += n.to_i
         end
         n = sum
