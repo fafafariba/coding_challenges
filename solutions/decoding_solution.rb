@@ -10,6 +10,7 @@
 
 # "123" can be decoded as "ABC" (1 2 3), "LC" (12 3) or "AW" (1 23), so the total number of ways is 3.
 
+# Recursive Solution
 
 def mapDecoding(message, i = 0, memo = {})
     if message == "" 
@@ -34,6 +35,8 @@ def mapDecoding(message, i = 0, memo = {})
     end
     count 
 end
+
+# Helper Method
 
 def valid?(str)
     if str.length == 2
@@ -78,6 +81,6 @@ def mapDecoding(message)
     dp.last
 end
 
-puts mapDecoding("1221112111122221211221221212212212111221222212122221222112122212121212221212122221211112212212211211")
+# puts mapDecoding("1221112111122221211221221212212212111221222212122221222112122212121212221212122221211112212212211211")
 
-puts mapDecoding("1")
+# puts mapDecoding("1")

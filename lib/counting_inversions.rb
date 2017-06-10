@@ -1,5 +1,7 @@
 require 'byebug'
 
+$inversions = []
+
 def inversion_count(array)
 	return [0, array] if array.length <= 1
 
@@ -29,6 +31,7 @@ def merge_and_count(left, right)
 			i += 1
 		else
 			merged << right[j]
+			$inversions << "(#{left[i]}, #{right[j]})"
 			inversions += left.length - i
 			j += 1
 		end
@@ -37,3 +40,8 @@ def merge_and_count(left, right)
 
 	[inversions, merged ]
 end
+
+arr = [201, 81, 319, 359, 51, 156, 362, 265, 404, 177, 144, 410, 403, 62, 490, 449, 283, 154, 175, 221, 403, 424, 332, 370, 379, 260, 9, 120, 472]
+print inversion_count(arr).first
+print $inversions.length
+print $inversions.sort 
