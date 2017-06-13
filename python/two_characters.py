@@ -22,23 +22,19 @@ def two_characters(s):
     return length
 
 def two_char_str(s, x, y):
-    if len(s) <= 1:
-        return s
-    else:
-        count = {}
-        new_str = ""
-        for l in s:
-            count[l] = count.setdefault(1, 0) +  1
-            if count.length > 2:
-                return ""
-            if l == x or l == y:
-                new_str += l
+    new_str = ""
+    for l in s:
+        if l == x or l == y:
+            new_str += l
     return new_str
 
 def valid_t(t):
-    for i in range(1, len(t)):
-        if t[i] == t[i - 1]:
-            return 0
+    if len(t) < 2:
+        return 0
+    else:
+        for i in range(1, len(t)):
+            if t[i] == t[i - 1]:
+                return 0
     return len(t)
 
 s1 = 'cobmjdczpffbxputsaqrwnfcweuothoygvlzugazulgjdbdbarnlffzpogdprjxvtvbmxjujeubiofecvmjmxvofejdvovtjulhhfyadr'
@@ -51,4 +47,4 @@ s3 = 'a'
 print(two_characters(s3) == 0)
 
 s4 = 'fd'
-print(two_characters(s4) == 1)
+print(two_characters(s4) == 2)
