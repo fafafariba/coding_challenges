@@ -1,4 +1,8 @@
+# String t always consists of two distinct alternating characters. For example, if string t's two distinct characters are x and y, then t could be 'xyxyx' or 'yxyxy' but not 'xxyy' or 'xyyx'.
 
+# You can convert some string s to string t by deleting characters from s. When you delete a character from s, you must delete all occurrences of it in s. For example, if s = 'abaacdabd' and you delete the character 'a', then the string becomes 'bcdbd'.
+
+# Given s, convert it to the longest possible string t. Then print the length of string t on a new line; if no string t can be formed from s, print 0 instead.
 
 def two_characters(s):
     
@@ -37,5 +41,14 @@ def valid_t(t):
             return 0
     return len(t)
 
-s = 'cobmjdczpffbxputsaqrwnfcweuothoygvlzugazulgjdbdbarnlffzpogdprjxvtvbmxjujeubiofecvmjmxvofejdvovtjulhhfyadr'
-print(two_characters(s) == 8)
+s1 = 'cobmjdczpffbxputsaqrwnfcweuothoygvlzugazulgjdbdbarnlffzpogdprjxvtvbmxjujeubiofecvmjmxvofejdvovtjulhhfyadr'
+print(two_characters(s1) == 8)
+
+s2 = ''
+print(two_characters(s2) == 0)
+
+s3 = 'a'
+print(two_characters(s3) == 0)
+
+s4 = 'fd'
+print(two_characters(s4) == 1)
