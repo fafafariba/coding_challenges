@@ -21,20 +21,19 @@ def two_char_str(s, x, y):
     if len(s) <= 1:
         return s
     else:
+        count = {}
         new_str = ""
         for l in s:
+            count[l] = count.setdefault(1, 0) +  1
+            if count.length > 2:
+                return ""
             if l == x or l == y:
                 new_str += l
     return new_str
 
 def valid_t(t):
-    count= {}
     for i in range(1, len(t)):
-        if t[i] in count:
-            count[t[i]] += 1
-        else:
-            count[t[i]] = 1
-        if t[i] == t[i - 1] or len(count) > 2:
+        if t[i] == t[i - 1]:
             return 0
     return len(t)
 
