@@ -39,3 +39,24 @@ puts follows_pattern?("abab", "redblueredblue")
 puts follows_pattern?("aaaa", "asdasdasdasd")
 puts follows_pattern?("aabb", "xyzabcxzyabc")
 
+
+def follows_pattern?(pattern, str, map = {})
+	return true if pattern.length == 0 && str.length == 0
+	return false if pattern.length == 0 || str.length == 0
+
+	if map[pattern]
+		
+		if match 
+			return true
+		else
+			return false
+		end
+
+	else 
+		new_pattern = pattern[1, -1]
+
+	
+
+end 
+
+def _recurse()
