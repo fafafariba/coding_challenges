@@ -18,7 +18,6 @@ def matrixElementsInSpiralOrder(matrix):
 				break 
 			else:
 				y += 1
-		print("x_min", x_min)
 
 		while x <= x_max and in_bounds(x_min, x_max, y_min, y_max):
 			spiral.append(matrix[x][y])
@@ -29,7 +28,6 @@ def matrixElementsInSpiralOrder(matrix):
 				break
 			else:
 				x += 1
-		print("y_max", y_max)
 
 		while y >= y_min and in_bounds(x_min, x_max, y_min, y_max):
 			spiral.append(matrix[x][y])
@@ -40,7 +38,6 @@ def matrixElementsInSpiralOrder(matrix):
 				break
 			else:
 				y -= 1
-		print("x_max", x_max)
 
 		while x >= x_min and in_bounds(x_min, x_max, y_min, y_max):
 			spiral.append(matrix[x][y])
@@ -51,11 +48,12 @@ def matrixElementsInSpiralOrder(matrix):
 				break
 			else:
 				x -= 1
-		print("y_min", y_min)
 	return spiral
 
 def in_bounds(x_min, x_max, y_min, y_max):
 	return x_min <= x_max and y_min <= y_max
+
+
 
 matrix = [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]
 
@@ -72,6 +70,5 @@ matrix3 = [
 	[9, 12, 5],
 	[8, 7, 6]
 ]
-
 
 print(matrixElementsInSpiralOrder(matrix))
