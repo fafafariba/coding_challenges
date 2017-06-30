@@ -3,8 +3,7 @@ require 'byebug'
 def zigzag(a)
     idx0 = zigzag_with_idx(a, 0)
     idx1 = zigzag_with_idx(a, 1)
-    
-    return idx0.length > idx1.length ? idx0 : idx1
+    return idx0.length > idx1.length ? idx0.length : idx1.length
 end
 
 def zigzag_with_idx(a, idx)
@@ -24,25 +23,27 @@ def zigzag_with_idx(a, idx)
 				nex = a[i+1]
 			end
 
-			if zigzag_small?(curr,prev,nex)
-					debugger
-					if curr_zigzag.empty?
-							curr_zigzag << prev
-					end
-					curr_zigzag << curr
-					if i + 1 == a.length
-							curr_zigzag << nex
-							if curr_zigzag.length > longest_zigzag.length
-								longest_zigzag = curr_zigzag
-							end
-					end
-			else
-					curr_zigzag << prev
-					debugger
-					if curr_zigzag.length > longest_zigzag.length
+			if zigzag_left?(curr, prev) && zigzag_right?(curr, nex)
+				# debugger
+				curr_zigzag.concat([prev, curr])
+				if i + 1 == a.length
+					if zigzag_right?(curr, nex) 
+						curr_zigzag << nex
+						if curr_zigzag.length > longest_zigzag.length
 							longest_zigzag = curr_zigzag
+						end
 					end
-					curr_zigzag = []
+				end
+			else
+				# debugger
+				curr_zigzag << prev
+				if zigzag_left?(curr, prev)
+					curr_zigzag << curr 
+				end
+				if curr_zigzag.length > longest_zigzag.length
+						longest_zigzag = curr_zigzag
+				end
+				curr_zigzag = []
 			end
 			i += 2
     end
@@ -50,10 +51,18 @@ def zigzag_with_idx(a, idx)
 end
     
 
-def zigzag_small?(curr, prev, nex)
-    curr < prev && curr < nex
+def zigzag_left?(curr, prev)
+    curr < prev 
+end
+
+def zigzag_right?(curr, nex)
+	curr < nex
 end
 
 
 a = [9, 8, 8, 5, 3, 5, 3, 2, 8, 6]
-print zigzag(a)
+puts zigzag(a) == 4
+b = [4, 4]
+puts zigzag(b) == 1
+c = [2, 1, 4, 4, 1, 4, 4, 1, 2, 0, 1, 0, 0, 3, 1, 3, 4, 1, 3, 4]
+puts zigzag(c) == 6
