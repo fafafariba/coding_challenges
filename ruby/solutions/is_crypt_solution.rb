@@ -4,10 +4,8 @@ def isCryptSolution(crypt, solution)
     word_values = []
     
     crypt.each do |word|
-				puts word
         word_value = ""
         (0...word.length).each do |i|
-            puts word.length
             if i == 0 && solution[word[i]] == '0' && word.length > 1
                 return false
             else

@@ -34,37 +34,45 @@ end
 
 #Alternative solution
 
-def isListPalindrome l
-    length = 0
-    node = l
-    while not l.nil?
-        length += 1
-        l = l.next
-    end
-
-		[1, 2, 3, 4, 5, 4, 3, 2, 1] = length = 9 / 2 = 4
+def isListPalindrome(l)
+    return true if l.nil? || l.next.nil?
     
-    node = 1
-    count = 6
-    prev = nil
-    while not node.nil?        
-        count += 1
-        if count > length / 2
-            curr_node = node #5_4_3_2_1
-            node = node.next #4_3_2_1_nil
-            curr_node.next = prev #nil_5_4_3_2
-            prev = curr_node #5_4_3_2_1
-        else
-            l = l.next
+    mid = find_mid(l)
+    l2 = reverse_list(mid)
+    curr1 = l
+    curr2 = l2
+    while !curr2.nil?
+        if curr1.value != curr2.value
+            return false
         end
+        curr1 = curr1.next
+        curr2 = curr2.next
     end
+    true 
+end
 
-    while prev != nil and k != nil
-        return false if prev.value != node.value
-        prev = prev.next
-        k = k.next
+def find_mid(list)
+    count = 1
+    slow_marker = list
+    fast_marker = list.next
+    while !fast_marker.nil? && !fast_marker.next.nil?
+        slow_marker = slow_marker.next
+        count += 1
+        fast_marker = fast_marker.next.next
     end
-    true
+    slow_marker.next
+end
+
+def reverse_list(curr)
+    prev_node = nil
+    next_node = nil
+    while !curr.nil?
+        next_node = curr.next 
+        curr.next = prev_node
+        prev_node = curr
+        curr = next_node
+    end
+    prev_node
 end
 	
 
