@@ -1,0 +1,20 @@
+{
+  "name": "coding_challenges",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/fafafariba/coding_challenges.git",
+  "author": "Fariba <massah.2@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
