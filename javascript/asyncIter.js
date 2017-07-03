@@ -28,29 +28,36 @@
 // }
 
 // promises
-export const triggerActions = count => {
+module.exports = triggerActions;
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+ function triggerActions(count) {
+   console.log("HIIIIIIIIIII");
     let callList = [];
     for(let i = 1; i <= count; i++) {
       callList.push( 
 				new Promise((resolve, reject) => {
-          return processAction((i, str) => resolve(str));
+          return processAction(i, str => resolve(str));
         })
 			);
     }
 
     Promise.all(callList)
     	.then(results => {
-      	results.forEach(res => res);
+      	results.forEach(res => console.log(res));
     });
 }
 
 
-const processAction = (i, callback) => {
+const processAction = (i, cb) => {
   setTimeout( () => {
-    callback("Processed Action " + i);
+    cb("Processed Action " + i);
   }, Math.random()*1000);
 }
 
 // triggerActionsR(5);
-//triggerActions(4);
+// triggerActions(4);
 

@@ -12,9 +12,14 @@
     "jest-cli": "^20.0.4"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
+  },
+  "babel": {
+        "presets": [
+            "es2015"]
   },
   "jest": {
+    "transform":  {".*": "<rootDir>/node_modules/babel-jest"},
     "testEnvironment": "node"
   }
 }
