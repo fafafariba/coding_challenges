@@ -3,6 +3,8 @@ beforeEach( () => {
     toBeEquivalentToArray: (util, customEqualityTesters) => {
       return {
         compare: (actual, expected) => {
+          console.log("actual ", actual);
+          console.log("actual ", expected);
           const flatten_a = actual.reduce((a,b) => a.concat(b), []);
           const flatten_e = expected.reduce((a, b) => a.concat(b), []);
 
@@ -12,6 +14,7 @@ beforeEach( () => {
             }
             return true 
           }
+          console.log("equal? ", equalArrays(flatten_a.sort(), flatten_e.sort()));
           const passed = equalArrays(flatten_a.sort(), flatten_e.sort());
           return {
             pass: passed,
