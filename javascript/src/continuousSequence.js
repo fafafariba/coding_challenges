@@ -5,7 +5,7 @@
 // [1, 3, 5, 23, 2], 8. Return True because 3 + 5 = 8
 // [1, 3, 5, 23, 2], 7 Return False because no sequence in this array adds up to 7
 
-const continuousSequence = (arr, k) => {
+const continuousSequence = (arr, t) => {
 
 }
 
