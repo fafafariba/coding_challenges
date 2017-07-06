@@ -18,11 +18,19 @@ beforeEach(function () {
         compare: function(actual, expected) {
           var flatten_a = actual.reduce(function(a,b) {
             return a.concat(b);
-          });
+          }, []);
           var flatten_e = expected.reduce(function(a, b){
             return a.concat(b);
-          }) 
-          var passed = flatten_a.sort() === flatten_e.sort();
+          }, []);
+
+          var equalArrays = function (arr1, arr2) {
+            for(var i = 0; i < arr1.length; i++) {
+              if (arr1[i] !== arr2[i]) return false;
+            }
+            return true 
+          }
+          // console.log(isEqual(flatten_a.sort(), flatten_e.sort())); 
+          var passed = equalArrays(flatten_a.sort(), flatten_e.sort());
           return {
             pass: passed,
             message: 'Expected ' + actual + (passed ? '' : ' not') + ' to equal ' + expected

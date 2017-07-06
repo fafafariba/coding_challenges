@@ -20,5 +20,5 @@ const pairs = (arr,k) => {
 	return results;
 }
 
-let a = [12, 10, 15, -1, 7, 6, 5, 4, 2, 1]
-console.log("pairs ", pairs(a, 10));
+// let a = [12, 10, 15, -1, 7, 6, 5, 4, 2, 1]
+// console.log("pairs ", pairs(a, 10));

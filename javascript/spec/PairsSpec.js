@@ -2,11 +2,11 @@ describe("Pairs", function() {
 
 
   it("should return an empty array when given an empty array", function() {
-    expect(pairs([], 5)).toBeEmptyArray();
+    expect(pairs([], 5)).toEqual([]);
   });
 
   it("should return an empty array when no pairs equal k", function() {
-    expect(pairs([7, 1, 3, -1, 0], 5)).toBeEmptyArray();
+    expect(pairs([7, 1, 3, -1, 0], 5)).toEqual([]);
   });
 
 	it("should return one pair when single pair equal k", function() {
