@@ -7,5 +7,24 @@
 
 const continuousSequence = (arr, t) => {
 
+	let sum = 0;
+	let i = 0;
+	let j = 0;
+	while (j < arr.length) {
+		sum = sum + arr[j];
+		if (sum === 20) {
+			return arr.slice(i, j+1);
+		} else if (sum < 20) {
+			j++;
+		} else {
+			while (sum > 20 && i <= j) {
+				sum = sum - arr[i];
+				i = i + 1;
+				if(sum === 20) return arr.slice(i, j+1);
+			}
+			j++;
+		}
+	}
+	return [];
 }
 
