@@ -1,5 +1,5 @@
 describe("Continuous Sequence", () => {
-
+  
   it("should return empty sequence when given an empty array", () => {
     expect(continuousSequence([], 5)).toEqual([]);
   });
