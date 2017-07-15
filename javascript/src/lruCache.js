@@ -7,11 +7,12 @@ class Link {
 }
 
 class LRUCache {
-	constructor(size) {
+	constructor(limit) {
 		this.first = null;
 		this.last = null;
 		this.cache = {};
-		this.size = size;
+		this.limit = limit;
+		this.size = 0;
 	}
 
 	append(value) {
@@ -27,22 +28,23 @@ class LRUCache {
 		}
 
 		this.cache[link.val]=link
+		this.size++;
 	}
 
 	setLast(){
-		// console.log("cache: ", this.cache);
-		if (Object.keys(this.cache).length === this.size) {
+		if (this.size === this.limit) {
 			let newLast = this.last.prev;
 			newLast.next = null; 
 			this.last.prev = null;
 			delete this.cache[this.last.val];
+			this.size--;
 			this.last = newLast
 		}
 	}
 }
 
-const implementLRUCache = (arr, size) => {
-	let lruCache = new LRUCache(size);
+const implementLRUCache = (arr, limit) => {
+	let lruCache = new LRUCache(limit);
 	arr.forEach( val => lruCache.append(val));
 	let result = [];
 	let link = lruCache.first;
