@@ -49,7 +49,6 @@ class LRUCache {
 	}
 
 	get(key){
-		console.log("inside get");
 		let node = this.cache[key];
 		if (!node) return "Error: Item does not exist";
 		this.remove(node);
@@ -79,12 +78,9 @@ class LRUCache {
 	}
 
 	update(key, value){
-		
 		let node = this.cache[key];
-		console.log("node ", node)
 		if (!node) return "Error: Item does not exist";
 		this.remove(node);
-		console.log("node ", node);
 		this.set(key, value);
 		return this.cache[key].val;
 	}
@@ -103,6 +99,5 @@ const implementLRUCache = (obj, size) => {
 	for(key in obj){
 		lruCache.set(key, obj[key]);
 	}
-	console.log(lruCache.returnCache());
 	return lruCache;
 }
