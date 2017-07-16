@@ -6,6 +6,12 @@ describe("LRU Cache", () => {
 		});
 	});
 
+	describe("When given null to cache", () => {
+		it("should return an empty array", () => {
+			expect(implementLRUCache([null, null, null], 0)).toEqual([]);
+		});
+	});
+
 	describe("When given less than cache size", () => {
 		
 		let n = 3;
